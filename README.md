@@ -1,1 +1,1 @@
-# Project GACOSS
+# Project GACOSS - Goofin Around Coding Silly Stuff 
