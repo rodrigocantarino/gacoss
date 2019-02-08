@@ -2,12 +2,14 @@
 
 namespace Main\Factory;
 
+use Library\Factory\AbstractFactory;
+
 /**
  * Description of MainFactory
  *
  * @author rodrigocantarino
  */
-abstract class MainFactory 
+class MainFactory extends AbstractFactory
 {
 
     public function __construct(\PDO $conn) 
