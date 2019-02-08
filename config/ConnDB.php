@@ -2,6 +2,9 @@
 
 namespace Config\ConnDb;
 
+use \PDO;
+use \PDOException;
+
 /**
  * Data Access Object - Model Layer
  * Uses: 
@@ -9,7 +12,7 @@ namespace Config\ConnDb;
  *  - 
  * @author Rodrigo Cantarino <rodrigopcantarino@gmail.com>
  */
-class ConnDb 
+class ConnDb extends \PDO
 {
     
     private static $instance = null;
@@ -29,10 +32,14 @@ class ConnDb
                 $this->setConfigMysql();
                 try 
                 {
+//                    $this->conn = parent::__construct($this->dsn, $this->user, $this->pass);
                     $this->conn = new \PDO($this->dsn, $this->user, $this->pass);
                 } 
-                catch( PDOException $Exception ) 
+                catch( \PDOException $Exception ) 
                 {
+//                    echo '<pre>';
+                    var_dump($Exception);
+                    print_r($Exception->xdebug_message);
                     $error_message = '<b>'.$Exception->getMessage( ).' - '.(int)$Exception->getCode( ).'</b>';
                     echo '<p>Couldn\'t connect to MySQL! <br> Error: '.$error_message.' </p>';
                     exit();
@@ -56,7 +63,6 @@ class ConnDb
             case 'mongo':
                 $this->setConfigMongoDB();
                 break;
-
             default:
                 $this->setConfigMysql();
                 $this->conn = new \PDO($this->dsn, $this->user, $this->pass);
@@ -65,12 +71,18 @@ class ConnDb
     }
     
     private function setConfigMysql() {
-        $this->host   = 'localhost';
+        $this->host   = 'mysql';
         $this->dbname = 'gacoss';
-        $this->user   = 'root';
-        $this->pass   = 'root';
-        $this->port   = '3606';
-        $this->dsn    = 'mysql:host={$this->host};dbname={$this->dbname}';
+        $this->user   = 'user';
+        $this->pass   = 'user12345';
+//        $this->user   = 'root';
+//        $this->pass   = 'root';
+        $this->port   = '3306';
+//        $this->dsn    = 'mysql:host='.$this->host.';dbname='.$this->dbname.'';
+        $this->dsn    = 'mysql:host='.$this->host.';port='.$this->port.';dbname='.$this->dbname.'';
+        echo '<h1>$this->dsn:';
+        var_dump($this->dsn);
+        echo '</h1>';
     }
     
     private function setConfigPostges() {

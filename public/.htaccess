@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^(css|img|img/uploads|js)($|/) - [L]
+RewriteRule ^inc/.*$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]

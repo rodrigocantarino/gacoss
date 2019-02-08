@@ -1,12 +1,14 @@
 <?php
 /**
  * Define application constants for PATHs and HOST
- * DOCKER configuration               : 'APPLICATION_HOST', 'http://gacoss.localhost'
+ * DOCKER configuration               : 'APPLICATION_HOST', 'http://localhost'
  * Apache configuration with vhosts   : 'APPLICATION_HOST', 'http://gacoss.localhost'
  * Apache configuration without vhosts: 'APPLICATION_HOST', 'http://localhost/gacoss/public'
  */
+
 defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
-defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://gacoss.localhost');
+defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://localhost');
+//defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://gacoss.localhost');
 //defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://localhost/gacoss/public');
 
 /**
@@ -15,19 +17,27 @@ defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://gacoss.localho
 include_once APPLICATION_PATH.'/library/functions.php';
 
 /**
- * Include CustomAutoloader file
- */
-include_once APPLICATION_PATH.'/library/customAutoloader.php';
-
-/**
  * Include Router file
  */
 include_once APPLICATION_PATH.'/library/router.php';
 
-/**
- * Define the autoload function that automatically load the Class files when the class is called
- */
-spl_autoload_register('customAutoloader');
+
+echo '<h1>Entrou carai!!!!</h1>';
+echo '<h1>APPLICATION_PATH: '.APPLICATION_PATH.'</h1>';
+echo '<h1>APPLICATION_HOST: '.APPLICATION_HOST.'</h1>';
+//echo '<br>';
+//echo '<pre>';
+//echo '<h1>$_SERVER[REQUEST_URI]!!!!</h1>';
+//print_r($_SERVER['REQUEST_URI']);
+//echo '<br>';
+//echo '<h1>ini_get_all(session)!!!!</h1>';
+//print_r(ini_get_all('session'));
+//echo '<h1>ini_get_all()!!!!</h1>';
+//print_r(ini_get_all());
+//echo '</pre>';
+//die();
+//die();
+
 
 /**
  * Session Start
@@ -46,11 +56,7 @@ $_SESSION['config']['layoutContent'] = APPLICATION_PATH.'/layout/_content.php';
 /**
  * Resolve the routes 
  */
-$module     = ($_GET['module']) ?? 'main';
-$controller = ($_GET['controller']) ?? 'index';
-$action     = ($_GET['action']) ?? 'index';
-
-router($module, $controller,$action);
+router();
 
 /**
  * "Start" the view layer of the application

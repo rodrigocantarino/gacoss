@@ -1,26 +1,85 @@
-version: '3'
+#version: '3'
+#
+#services:
+#    db:
+#        image: cantarino/mysql
+#        environment:
+#            MYSQL_DATABASE: gacoss
+#            MYSQL_USER: user
+#            MYSQL_PASSWORD: user12345
+#            MYSQL_ROOT_PASSWORD: root
+#        ports:
+#            - "3306:3306"
+#        networks:
+#            mynet:
+#                aliases:
+#                    - localhost.dev
+#    web:
+#        image: cantarino/php7
+#        container_name: php7
+#        depends_on:
+#            - db
+#        volumes:
+#            # Local_Volume:Container_Volume
+#            - /Applications/MAMP/htdocs/gacoss/:/var/www/html/
+#        ports:
+#            - "80:80"
+#        environment: 
+#            WEB_DOCUMENT_ROOT: public
+#        stdin_open: true
+#        tty: true
+#        networks:
+#            mynet:
+#                aliases:
+#                    - localhost.dev
+#    networks:
+#        mynet:
+#            aliases:
+#                - localhost.dev
 
+
+version: "3.2"
 services:
-  db:
-    image: cantarino/mysql
-    environment:
-      MYSQL_DATABASE: gacoss
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user12345
-    ports:
-      - "3306:3306"
-  web:
+  php:
     image: cantarino/php7
-    container_name: php7
-    depends_on:
-      - db
-    volumes:
-        - /Applications/MAMP/htdocs/gacoss/public/:/var/www/html/
+    networks:
+#      - frontend
+      - backend
     ports:
       - "80:80"
-    environment: 
-        WEB_DOCUMENT_ROOT: public 
-    stdin_open: true
-    tty: true
-    
+      - "8080:80"
+    volumes:
+      - /Applications/MAMP/htdocs/gacoss/:/var/www/html/
+#  apache:
+#    build: './apache/'
+#    depends_on:
+#      - php
+#      - mysql
+#    networks:
+#      - frontend
+#      - backend
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - ./public_html/:/var/www/html/
+  mysql:
+    image: cantarino/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    hostname: mysql
+    environment:
+#        HOSTNAME: local_mysql
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: user
+        MYSQL_PASSWORD: user12345
+        MYSQL_DATABASE: gacoss
+#        MYSQL_ROOT_HOST: local_mysql
+    networks:
+#        - frontend
+        - backend
+    ports:
+#        - "3306:3306"
+        - "3306:33060"
+networks:
+#  frontend:
+  backend:
