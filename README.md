@@ -38,9 +38,15 @@ Initially the software architecture pattern will be MVC. As the code evolves, ne
 ___________________________________________________________________________________________
 
 # How to execute via docker:
+
 ### Go to /gacoss/docker folder on your console and execute the command:
 ```
     $ docker-compose up 
+```
+
+### Open your browser and type:
+```
+    http://localhost
 ```
 ___________________________________________________________________________________________
 
