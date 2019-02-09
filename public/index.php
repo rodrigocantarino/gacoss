@@ -15,5 +15,18 @@ include_once APPLICATION_PATH.'/library/Router.php';
 session_start();
 
 /** * Resolve the routes * */
-$router = new \Library\Router\Router();
-$router->go();
+try 
+{
+    $router = new \Library\Router\Router();
+    $router->go();
+} 
+catch (Exception $exc) 
+{
+    echo '<h1>';
+    echo $exc->getTraceAsString();
+    echo '<pre>';
+    print_r($exc);
+    echo '</pre>';
+    session_destroy();
+}
+
