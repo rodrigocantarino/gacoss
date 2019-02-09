@@ -41,3 +41,10 @@ Initially the software architecture pattern will be MVC. As the code evolves, ne
 # Step 2
 - Define software architecture
 - Code initial files
+
+# Step 3 (not started yet)
+- Define a Session handler class
+- Refine Route class
+
+# Step 4 (not started yet)
+- Code Blog Module
