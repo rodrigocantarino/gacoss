@@ -1,12 +1,12 @@
 <?php
 
-namespace Main\Model;
+namespace App\Model;
 
 /**
  *
  * @author rodrigocantarino
  */
-interface MainInterface {
+interface AppInterface {
     
     /**
      * Return a set of all blog posts that we can iterate over.

@@ -37,4 +37,7 @@ Initially the software architecture pattern will be MVC. As the code evolves, ne
 
 # Step 1
 - Define folder structure 
+
+# Step 2
+- Define software architecture
 - Code initial files

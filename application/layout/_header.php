@@ -20,7 +20,7 @@
 
 <?php
 
-$css_nav_class   = 'navbar-dark bg-dark';
+$css_nav_class = 'navbar-dark bg-dark';
 
 if(isset($_SESSION['config']['statusLogged']) && $_SESSION['config']['statusLogged'] == true)
 {
@@ -31,20 +31,20 @@ if(isset($_SESSION['config']['statusLogged']) && $_SESSION['config']['statusLogg
     {
         case 1: // Admin
             $css_nav_class = 'navbar-dark bg-gacoss-admin';
-            $link_btn_admin = APPLICATION_HOST.'/index.php?module=admin&controller=admin&action=index';
+            $link_btn_admin = APPLICATION_HOST.'/admin/admin/index';
             break;
         case 2: // Site user
             $css_nav_class = 'navbar-dark bg-gacoss-site-user';
-            $link_btn_site_user = APPLICATION_HOST.'/index.php?module=user&controller=user&action=index';
+            $link_btn_site_user = APPLICATION_HOST.'/user/user/index';
             break;
     }
     
 }
 
-$link_btn_home   = APPLICATION_HOST.'/index.php?module=main&controller=index&action=index';
-$link_btn_blog   = APPLICATION_HOST.'/index.php?module=blog&controller=blog&action=index';
-$link_btn_login  = APPLICATION_HOST.'/index.php?module=user&controller=login&action=login';
-$link_btn_logout = APPLICATION_HOST.'/index.php?module=user&controller=login&action=logout';
+$link_btn_home   = APPLICATION_HOST.'/main/index/index';
+$link_btn_blog   = APPLICATION_HOST.'/blog/blog/index';
+$link_btn_login  = APPLICATION_HOST.'/user/login/login';
+$link_btn_logout = APPLICATION_HOST.'/user/login/logout';
 
 
 ?>
@@ -103,10 +103,7 @@ HTML;
 </li>
 HTML;
             }
-            
             echo $html;
-            
-            
             ?>
     </div>
 </nav>   

@@ -16,17 +16,20 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     </head>
     <body>
-        <?php include_once '_header.php'; ?>
+        <?php //include_once '_header.php'; ?>
+        <?php include_once $_SESSION['config.layoutHeader'];  ?>
         <div class="container">
           <?php
-            if(isset($_SESSION['config']['login_error'])){
+            if(isset($_SESSION['config.loginError'])){
                 echo '<div class="alert alert-danger" role="alert">';
-                echo $_SESSION['config']['login_error'];
+                echo $_SESSION['config.login_error'];
                 echo '</div>';
             }
-            include_once $_SESSION['config']['layoutContent']; 
+            var_dump($_SESSION['config.layoutContent'] );
+            include_once $_SESSION['config.layoutContent']; 
             echo '<hr>';
-            include_once '_footer.php';
+//            include_once '_footer.php';
+            include_once $_SESSION['config.layoutFooter']; 
           ?>
         </div>
     </body>
