@@ -60,7 +60,7 @@ ________________________________________________________________________________
 # Step 3
 - Define a Session handler class
 - Refine Route class
-- PSR4 implementation
+- [PSR4](https://www.php-fig.org/psr/psr-4/) implementation
 
 # Step 4 (not started yet)
 - Code Blog Module
