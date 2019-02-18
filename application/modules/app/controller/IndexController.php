@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Controller;
+namespace Gacoss\App\Controller;
 
-use \Config\ConnDb\ConnDb;
+use Gacoss\Library\Controller\AbstractController;
+use Gacoss\Library\View\View as View;
+
+use Gacoss\Library\SessionManager\SessionManager as SessionManager;
 
 /**
  * Description of Index
  *
  * @author rodrigocantarino
  */
-class IndexController 
+class IndexController extends AbstractController
 {
-    private $conn;
-
     /**
      * 
      * @param \Config\ConnDb\ConnDb::instance  $conn
      * @param string $action
      * @return type
      */
-    public function __construct($conn, string $action = 'index') 
-    {    
+    public function __construct(\PDO $conn) 
+    {
         $this->conn = $conn;
-        $this->{$action}();
+        $this->session_manager = new SessionManager();
     }
     
     /**
@@ -30,7 +31,13 @@ class IndexController
      */
     public function index()
     {
-        $_SESSION['config.layoutContent'] = APPLICATION_PATH . '/modules/app/view/index.php';
+        new View([]);
+//        $this->session_manager::setSessionNewContent('config.layoutContent', APPLICATION_PATH . '/modules/app/view/index.php');
+    }
+    
+    public function index2()
+    {
+        $this->session_manager::setSessionNewContent('config.layoutContent', APPLICATION_PATH . '/modules/app/view/index.php');
     }
     
 }

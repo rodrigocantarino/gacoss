@@ -57,9 +57,10 @@ ________________________________________________________________________________
 - Define software architecture
 - Code initial files
 
-# Step 3 (not started yet)
+# Step 3
 - Define a Session handler class
 - Refine Route class
+- PSR4 implementation
 
 # Step 4 (not started yet)
 - Code Blog Module

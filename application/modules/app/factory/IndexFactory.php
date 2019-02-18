@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Factory;
+namespace Gacoss\App\Factory;
 
-use Library\Factory\AbstractFactory;
-use \App\Controller\IndexController;
+use Gacoss\Library\Factory\AbstractFactory;
+use Gacoss\Config\ConnDb as ConnDb;
+use Gacoss\App\Controller\IndexController as IndexController;
 
 /**
  * Description of IndexFactory
@@ -12,10 +13,13 @@ use \App\Controller\IndexController;
  */
 class IndexFactory extends AbstractFactory
 {
-
-    public function __construct(string $action)
-    {
-        new \App\Controller\IndexController(parent::getConn(), $action);
+    public function __construct()
+    {   
+        $this->conn = ConnDb::getInstance()->getConn();
+        $this->setController(new IndexController($this->conn));
     }
-
+    
+    protected function setController($controller) {
+        $this->controller = $controller;
+    }
 }

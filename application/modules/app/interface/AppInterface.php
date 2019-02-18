@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Model;
+namespace Gacoss\App\Model;
 
 /**
  *
  * @author rodrigocantarino
  */
-interface AppInterface {
+interface AppInterface 
+{
     
     /**
      * Return a set of all blog posts that we can iterate over.

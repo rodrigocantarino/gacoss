@@ -7,17 +7,19 @@
  */
 defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 defined('APPLICATION_HOST') || define('APPLICATION_HOST', 'http://localhost');
+defined('APPLICATION_ENV') || define('APPLICATION_ENV', 'dev');
 
 include_once APPLICATION_PATH.'/library/functions.php';
 include_once APPLICATION_PATH.'/library/Router.php';
+include_once APPLICATION_PATH.'/library/SessionManager.php';
 
 /** * Session Start * */
-session_start();
+Gacoss\Library\SessionManager\SessionManager::sessionStart('Default');
 
 /** * Resolve the routes * */
 try 
 {
-    $router = new \Library\Router\Router();
+    $router = new Gacoss\Library\Router\Router();
     $router->go();
 } 
 catch (Exception $exc) 

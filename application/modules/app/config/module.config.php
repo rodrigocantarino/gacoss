@@ -6,13 +6,17 @@ use App\Factory\AppFactory;
  * Module's configuration array
  */
 return [
+    // Module
     'app' =>[
+        // Controller
         'index'=> [
-            'factory' => App\Factory\IndexFactory::class,
+            // Factory
+            'factory' => Gacoss\App\Factory\IndexFactory::class,
+            // Views
             'views'   => [
                 'index',
                 'error_404'
             ]
         ]   
-    ]    
+    ]
 ];

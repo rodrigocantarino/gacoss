@@ -41,7 +41,7 @@ if(isset($_SESSION['config']['statusLogged']) && $_SESSION['config']['statusLogg
     
 }
 
-$link_btn_home   = APPLICATION_HOST.'/main/index/index';
+$link_btn_home   = APPLICATION_HOST.'/app/index/index';
 $link_btn_blog   = APPLICATION_HOST.'/blog/blog/index';
 $link_btn_login  = APPLICATION_HOST.'/user/login/login';
 $link_btn_logout = APPLICATION_HOST.'/user/login/logout';
@@ -50,18 +50,19 @@ $link_btn_logout = APPLICATION_HOST.'/user/login/logout';
 ?>
 
 <nav class="navbar navbar-expand-md fixed-top <?php echo $css_nav_class; ?>">
-    <img src="<?php echo APPLICATION_HOST; ?>/img/goofy.png" height="55px" />
+    <!-- <img src="<?php //echo APPLICATION_HOST; ?>/img/goofy.png" height="55px" /> --> 
+    <a class="navbar-brand" href="<?= $link_btn_home?>"><span style="font-family: AmericanTypewriter; color: white"> < gacoss > </span></a>
     &nbsp;
-    <a class="navbar-brand" href="#">Gacoss</a>
+<!--    <a class="navbar-brand" href="#">Gacoss</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+<!--            <li class="nav-item active">
                 <a class="nav-link" href="<?php echo $link_btn_home; ?>">Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li>-->
             <li class="nav-item active">
                 <a class="nav-link" href="<?php echo $link_btn_blog; ?>">Blog</a>
             </li>

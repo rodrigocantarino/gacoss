@@ -1,6 +1,6 @@
 <?php
 
-namespace Config\ConnDb;
+namespace Gacoss\Config;
 
 use \PDO;
 use \PDOException;
@@ -32,12 +32,10 @@ class ConnDb extends \PDO
                 $this->setConfigMysql();
                 try 
                 {
-//                    $this->conn = parent::__construct($this->dsn, $this->user, $this->pass);
                     $this->conn = new \PDO($this->dsn, $this->user, $this->pass);
                 } 
                 catch( \PDOException $Exception ) 
                 {
-//                    echo '<pre>';
                     var_dump($Exception);
                     print_r($Exception->xdebug_message);
                     $error_message = '<b>'.$Exception->getMessage( ).' - '.(int)$Exception->getCode( ).'</b>';
@@ -75,14 +73,8 @@ class ConnDb extends \PDO
         $this->dbname = 'gacoss';
         $this->user   = 'user';
         $this->pass   = 'user12345';
-//        $this->user   = 'root';
-//        $this->pass   = 'root';
         $this->port   = '3306';
-//        $this->dsn    = 'mysql:host='.$this->host.';dbname='.$this->dbname.'';
         $this->dsn    = 'mysql:host='.$this->host.';port='.$this->port.';dbname='.$this->dbname.'';
-        echo '<h1>$this->dsn:';
-        var_dump($this->dsn);
-        echo '</h1>';
     }
     
     private function setConfigPostges() {
@@ -103,7 +95,7 @@ class ConnDb extends \PDO
     }
     
     public static function getInstance() {
-        if(!self::$instance){
+        if(self::$instance == null){
             self::$instance = new ConnDb();
         }
         return self::$instance;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Library\Factory;
+namespace Gacoss\Library\Factory;
 
-use Config\ConnDb\ConnDb;
+use Gacoss\Config\ConnDb\ConnDb;
 
 /**
  * Description of AbstractFactory
@@ -11,21 +11,12 @@ use Config\ConnDb\ConnDb;
  */
 abstract class AbstractFactory 
 {
-    private $conn;
-
-    public function __invoke($action = 'index')
-    {
-        /**
-         * Create a Database Access Object with PDO Class
-         * See: Singleton Pattern -> see: https://en.wikipedia.org/wiki/Singleton_pattern
-         */
-        $instance = Config\ConnDb\ConnDb::getInstance();
-        $this->conn = $instance->getConn();
-    }
+    protected $controller;
     
-    public function getConn() 
-    {
-        return $this->conn;
+    abstract protected function setController($controller);
+    
+    public function getController() {
+        return $this->controller;
     }
 
 }
